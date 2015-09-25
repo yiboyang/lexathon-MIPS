@@ -1,17 +1,17 @@
 import sys
 
+# By Yibo Yang
 # input: name of the word list file to be preprocessed, e.g.
 # preprocess('linux_words.txt');
 # output: 26 text files: list_a.txt, list_b.txt, list_c.txt, ... list_z.txt. Each
-# of them contains words that contain the corresponding character. All the words
-# are potentially 'valid' entries for the Lexathon game (with that particular
+# lists words that contain the corresponding character, which are also 
+# potentially 'valid' entries in the Lexathon game (with that particular
 # character at the center), i.e. no repeated characters, length b/w 4 and 9
 
 # define some evil global vars
 lowerChars='abcdefghijklmnopqrstuvwxyz'
 minCharNum=4 # default minimum number of characters
 maxCharNum=9
-
 
 
 def preprocess(wordlist):
@@ -46,9 +46,10 @@ def valid(string):
     if len(string)<minCharNum or len(string)>maxCharNum:
         return False;
     for char in lowerChars:
-        if string.count(char)>1:
+        if string.count(char)>1: # if any char appears more than once
             return False;
     return True;
+
 
 if __name__ == '__main__':
     if (len(sys.argv)!=2):
