@@ -3,7 +3,7 @@ import sys
 # By Yibo Yang
 # input: name of the word list file to be preprocessed, e.g.
 # preprocess('linux_words.txt');
-# output: 26 text files: list_a.txt, list_b.txt, list_c.txt, ... list_z.txt. Each
+# output: 26 text files: a.txt, b.txt, c.txt, ... z.txt. Each
 # lists words that contain the corresponding character, which are also 
 # potentially 'valid' entries in the Lexathon game (with that particular
 # character at the center), i.e. no repeated characters, length b/w 4 and 9
@@ -18,7 +18,7 @@ def preprocess(wordlist):
     # First create and collect a bunch of file handles for the output files
     foutList=[]
     for char in lowerChars:
-        out='list_'+char+'.txt'
+        out=char+'.txt'
         try:
             fout=open(out,'w')
             foutList.append(fout)
