@@ -1,9 +1,11 @@
-# this is the version that allows duplicate letters in the grid (note that the preprocessed dictionaries should be updated accordingly)
+# this is the version that allows duplicate letters in the grid 
+# the preprocessed dictionaries should be updated accordingly
 # make sure you're using python3
-# by Yibo Yang
-import random as r
-lowerChars='abcdefghijklmnopqrstuvwxyz'
+# By Yibo Yang
 
+import random as r
+
+lowerChars='abcdefghijklmnopqrstuvwxyz'
 
 # given a character set and center letter, output all the possible solutions by examing the dictionary file corresponding to center character
 # this is probably not the most efficient approach; since we now allow repetitive letters (but they have to all come from the grid),

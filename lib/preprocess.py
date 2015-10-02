@@ -1,14 +1,14 @@
-import sys
-
-# By Yibo Yang
 # input: name of the word list file to be preprocessed, e.g.
-# preprocess('linux_words.txt');
+# preprocess('linux_words.txt'); (this is the one gigantic dictionary,
+# terminating in newline)
 # output: 26 text files: a.txt, b.txt, c.txt, ... z.txt. Each
 # lists words that contain the corresponding character, which are also 
 # potentially 'valid' entries in the Lexathon game (with that particular
 # character at the center), i.e. no repeated characters, length b/w 4 and 9
+# By Yibo Yang
 
-# define some evil global vars
+import sys
+
 lowerChars='abcdefghijklmnopqrstuvwxyz'
 minCharNum=4 # default minimum number of characters
 maxCharNum=9
@@ -47,10 +47,6 @@ def valid(string):
     for char in string:
         if (char<'a' or char>'z'):
             return False
-    # the uniqueness test is now left out; uncomment the lines below to enforce uniqueness
-    # for char in lowerChars: # not valid if any char appears more than once
-    #     if string.count(char)>1:
-    #         return False;
     return True;
 
 
