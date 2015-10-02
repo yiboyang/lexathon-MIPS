@@ -29,11 +29,12 @@ def preprocess(wordlist):
     # Now real processing
     with open(wordlist, 'r') as words:
         for word in words:
+            word=word.rstrip() # remove annoying newline at the end; word[:-1] doesn't always work b/c '\r\n' vs '\n' issue
+            print(word)
             if valid(word):
-                for char in word: # append this word with appropriate handle
-                    if char>'z' or char<'a': # handle weird chars or EOF newline
-                        break
-                    foutList[ord(char)-97].write(word)
+                wordChars=set(word) # important to convert to set to avoid duplicates
+                for char in wordChars: # append this word with appropriate handle;
+                    foutList[ord(char)-97].write(word+'\n')
                         
     for fout in foutList:
         fout.close()
@@ -41,13 +42,15 @@ def preprocess(wordlist):
 
 # returns true if the given string is 'valid'
 def valid(string):
-    if string[0]>='A' and string[0]<='Z': # discard words starting with uppercase
-        return False;
     if len(string)<minCharNum or len(string)>maxCharNum:
-        return False;
-    for char in lowerChars:
-        if string.count(char)>1: # if any char appears more than once
-            return False;
+        return False
+    for char in string:
+        if (char<'a' or char>'z'):
+            return False
+    # the uniqueness test is now left out; uncomment the lines below to enforce uniqueness
+    # for char in lowerChars: # not valid if any char appears more than once
+    #     if string.count(char)>1:
+    #         return False;
     return True;
 
 
