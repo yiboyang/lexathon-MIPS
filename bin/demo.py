@@ -1,6 +1,6 @@
 # this is the version that allows duplicate letters in the grid 
 # the preprocessed dictionaries should be updated accordingly
-# make sure you're using python3
+# make sure you're using Python3!!!
 # By Yibo Yang
 
 import random as r
@@ -17,7 +17,11 @@ def solutions(chars, center):
     sol=[] # assuming the dictionary files are nice and contain no duplicates; otherwise we have to use a set
     f=open("../lib/"+center+'.txt','r') # open the preprocessed file for searching
     for line in f:
-        pool=chars[:] # make a deep copy; this could be inefficient; instead, next time use a boolean array for this operation (reset everytime)
+        # here I make a deep copy of the input chars array and remove elements from it everytime; not very efficient
+        # instead, use an integer array of size 26, each element storing the count of that letter (e.g. charRay[0]=3 means 'a' appears 3 times in
+        # chars, charRay[2]=0 means no appearance of 'c'); then for char in every line, subtract 1 from the corresponding entry in charRay, which is
+        # the same as pool.remove(ch).
+        pool=chars[:] # make a DEEP copy
         goodLine=True
         for ch in line.rstrip(): # get rid of the newline at the end
             try:
@@ -58,7 +62,8 @@ def game():
         while (True):
             print()
             printGrid(chars)
-            entered=input("enter your word (4-9 char lower case, must use the letter at the centerof the grid); [enter 'S' for all solutions, 'D' to be done with this round]: ")
+            entered=input("enter your word (4-9 char lower case, must use the letter at the centerof the grid); [enter 'S' for all solutions, 'D' to be \
+                    done with this round]: ")
             print()
             if (entered=='S'):
                 print(soln)
@@ -83,3 +88,4 @@ def game():
 
 if __name__ == "__main__":
     game()
+
