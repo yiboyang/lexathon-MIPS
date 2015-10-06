@@ -1,6 +1,6 @@
 # this is the version that allows duplicate letters in the grid 
 # the preprocessed dictionaries should be updated accordingly
-# make sure you're using Python3!!!
+# make sure you're using Python 3!!!
 # By Yibo Yang
 
 import random as r
